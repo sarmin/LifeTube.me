@@ -1,0 +1,9 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<parameters>
+  <parameter name="LifeTube.Properties.Setings.Connstring-Web.config Connection String" description="LifeTube.Properties.Setings.Connstring Connection String used in web.config by the application to access the database." defaultvalue="Data Source=s08.winhost.com;Initial Catalog=DB_46167_lifetube;Persist Security Info=True;User ID=DB_46167_lifetube_user;Password=shutter123" tags="SqlConnectionString">
+    <parameterEntry kind="XmlFile" scope="obj\\Debug\\Package\\PackageTmp\\Web\.config$" match="/configuration/connectionStrings/add[@name='LifeTube.Properties.Setings.Connstring']/@connectionString" />
+  </parameter>
+  <parameter name="LifeTubeEntities-Web.config Connection String" description="LifeTubeEntities Connection String used in web.config by the application to access the database." defaultvalue="metadata=res://*/Models.LifeTube.csdl|res://*/Models.LifeTube.ssdl|res://*/Models.LifeTube.msl;provider=System.Data.SqlClient;provider connection string=&quot;data source=s08.winhost.com;initial catalog=DB_46167_lifetube;user id=DB_46167_lifetube_user;password=shutter123;multipleactiveresultsets=True;App=EntityFramework&quot;" tags="SqlConnectionString">
+    <parameterEntry kind="XmlFile" scope="obj\\Debug\\Package\\PackageTmp\\Web\.config$" match="/configuration/connectionStrings/add[@name='LifeTubeEntities']/@connectionString" />
+  </parameter>
+</parameters>

@@ -1,0 +1,33 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2008/09/mapping/cs">
+  <EntityContainerMapping StorageEntityContainer="DB_46167_lifetubeModelStoreContainer" CdmEntityContainer="DB_46167_lifetubeEntities">
+    <EntitySetMapping Name="Profiles">
+      <EntityTypeMapping TypeName="DB_46167_lifetubeModel.Profile">
+        <MappingFragment StoreEntitySet="Profile">
+          <ScalarProperty Name="profileid" ColumnName="profileid" />
+          <ScalarProperty Name="firstName" ColumnName="firstName" />
+          <ScalarProperty Name="lastName" ColumnName="lastName" />
+          <ScalarProperty Name="createdOn" ColumnName="createdOn" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Users">
+      <EntityTypeMapping TypeName="DB_46167_lifetubeModel.User">
+        <MappingFragment StoreEntitySet="Users">
+          <ScalarProperty Name="userid" ColumnName="userid" />
+          <ScalarProperty Name="email" ColumnName="email" />
+          <ScalarProperty Name="password" ColumnName="password" />
+          <ScalarProperty Name="firstName" ColumnName="firstName" />
+          <ScalarProperty Name="lastName" ColumnName="lastName" />
+          <ScalarProperty Name="phone" ColumnName="phone" />
+          <ScalarProperty Name="profileid" ColumnName="profileid" />
+          <ScalarProperty Name="rootUser" ColumnName="rootUser" />
+          <ScalarProperty Name="createdBy" ColumnName="createdBy" />
+          <ScalarProperty Name="createdDate" ColumnName="createdDate" />
+          <ScalarProperty Name="lastModifiedBy" ColumnName="lastModifiedBy" />
+          <ScalarProperty Name="lastModifiedDate" ColumnName="lastModifiedDate" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+  </EntityContainerMapping>
+</Mapping>

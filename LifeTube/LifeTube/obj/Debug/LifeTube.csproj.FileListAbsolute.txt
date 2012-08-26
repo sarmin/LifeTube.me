@@ -1,0 +1,7 @@
+F:\LifeTube\LifeTube\LifeTube\bin\LifeTube.dll
+F:\LifeTube\LifeTube\LifeTube\bin\LifeTube.pdb
+F:\LifeTube\LifeTube\LifeTube\obj\Debug\ResolveAssemblyReference.cache
+F:\LifeTube\LifeTube\LifeTube\obj\Debug\LifeTube.dll
+F:\LifeTube\LifeTube\LifeTube\obj\Debug\LifeTube.pdb
+F:\LifeTube\LifeTube\LifeTube\bin\EntityFramework.dll
+F:\LifeTube\LifeTube\LifeTube\bin\EntityFramework.xml

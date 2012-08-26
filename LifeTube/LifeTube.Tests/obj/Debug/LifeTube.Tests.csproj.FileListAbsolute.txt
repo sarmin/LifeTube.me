@@ -1,0 +1,8 @@
+F:\LifeTube\LifeTube\LifeTube.Tests\bin\Debug\LifeTube.Tests.dll.config
+F:\LifeTube\LifeTube\LifeTube.Tests\bin\Debug\LifeTube.Tests.dll
+F:\LifeTube\LifeTube\LifeTube.Tests\bin\Debug\LifeTube.Tests.pdb
+F:\LifeTube\LifeTube\LifeTube.Tests\bin\Debug\LifeTube.dll
+F:\LifeTube\LifeTube\LifeTube.Tests\bin\Debug\LifeTube.pdb
+F:\LifeTube\LifeTube\LifeTube.Tests\obj\Debug\ResolveAssemblyReference.cache
+F:\LifeTube\LifeTube\LifeTube.Tests\obj\Debug\LifeTube.Tests.dll
+F:\LifeTube\LifeTube\LifeTube.Tests\obj\Debug\LifeTube.Tests.pdb
