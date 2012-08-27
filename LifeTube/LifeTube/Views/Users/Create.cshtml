@@ -16,7 +16,8 @@
         <table style="width: 50%;">
             <tr>
                 <td>
-                   @Html.LabelFor(model => model.firstName)
+                 
+                    @Html.Label("First Name")
                 </td>
                 <td>
                     @Html.EditorFor(model => model.firstName)
@@ -25,7 +26,8 @@
              </tr>
              <tr>
                 <td>
-                    @Html.LabelFor(model => model.lastName)
+                    
+                     @Html.Label("Last Name")
                 </td>
                 <td>
                     @Html.EditorFor(model => model.lastName)
@@ -35,7 +37,7 @@
             
             <tr>
                 <td>
-                   @Html.LabelFor(model => model.email)
+                   @Html.Label("e-mail")
                 </td>
                 <td>
                     @Html.EditorFor(model => model.email)
@@ -45,7 +47,7 @@
            
             <tr>
                 <td>
-                     @Html.LabelFor(model => model.phone)
+                      @Html.Label("Phone")
                 </td>
                 <td>
                     @Html.EditorFor(model => model.phone)

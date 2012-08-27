@@ -6,6 +6,7 @@ using System.Linq;
 using System.Web;
 using System.Web.Mvc;
 using LifeTube.Models;
+using System.Net.Mail;
 
 namespace LifeTube.Controllers
 { 
@@ -56,7 +57,17 @@ namespace LifeTube.Controllers
                 //usr.email =
                 db.Users.AddObject(user);
                 db.SaveChanges();
-                return RedirectToAction("Index");  
+                return RedirectToAction("Index");
+
+                MailMessage message = new MailMessage();
+                message.From = new MailAddress("anamika@mtxbd.com.com");
+                message.To.Add(new MailAddress(user.email));
+                message.Subject = " Welcome to Matrix";
+                message.Body = "  Dear " + user.firstName + " " + user.lastName + "," + Environment.NewLine + "Thank you for joining the Matrix family." + Environment.NewLine + "We encourage you to collaborate with your GM and DGM for continuous success." + Environment.NewLine + "Username:" + user.firstName + " " + user.lastName + " " + Environment.NewLine + "Regards," + Environment.NewLine + "Matrix Admin";
+
+                SmtpClient client = new SmtpClient();
+                client.Send(message);
+
             }
 
             ViewBag.profileid = new SelectList(db.Profiles, "profileid", "firstName", user.profileid);
