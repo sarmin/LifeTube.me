@@ -1,0 +1,87 @@
+﻿@*@model IEnumerable<LifeTube.Models.UserCircleModel>*@
+           @model IEnumerable<dynamic>
+                     @* @model Tuple<IEnumerable<dynamic>,LifeTube.Models.UserCircleModel, LifeTube.Models.GetUserModel>*@
+
+                    
+
+
+@{
+    ViewBag.Title = "MyCircle";
+    Layout = "~/Views/Shared/_Layout1.cshtml";
+}
+<script src="@Url.Content("~/Scripts/jquery.unobtrusive-ajax.js")" type="text/javascript"></script>
+<script src="@Url.Content("~/Scripts/jquery.validate.js")" type="text/javascript"></script>
+<script src="@Url.Content("~/Scripts/jquery.unobtrusive-ajax.min.js")" type="text/javascript"></script>
+
+<script src="@Url.Content("~/Scripts/jquery.autocomplete.js")" type="text/javascript"></script>
+<script src="@Url.Content("~/Scripts/jquery.autocomplete.txt")" type="text/javascript"></script>
+<link href="../../Content/css/jquery.autocomplete.css" rel="Stylesheet" type="text/css" /></link>
+<script src="http://ajax.googleapis.com/ajax/libs/jqueryui/1.8.11/jquery-ui.min.js" type="text/javascript"></script>
+
+
+
+<h2>MyCircle</h2>
+
+
+<table>
+    <tr>
+        <th></th>
+        
+        <th>
+            First Name
+        </th>
+        
+        <th>
+            Relationship
+        </th>
+    </tr>
+
+@foreach (var item in Model) {
+    <tr>
+        <td>
+           @Html.ActionLink("Edit", "Edit", new { /* id=item.PrimaryKey */ }) |
+           @* @Html.ActionLink("Details", "Details", new { /* id=item.PrimaryKey */ }) |*@
+            @Html.ActionLink("Delete", "Delete", new { /* id=item.PrimaryKey */ })
+        </td>
+       
+        <td>
+            @item.firstName           
+        </td>
+        
+        <td>
+            @item.relationship
+        </td>
+    </tr>
+}
+
+
+
+
+</table>
+
+
+ <input type="text" id="name-list" />
+
+    <script type="text/javascript" language="javascript">
+        $(function () {
+            
+            $("#name-list").autocomplete({
+                source: function (request, response) {
+                    $.ajax({
+                        url: "/UserCircleController/SearchUserNames", type: "POST", dataType: "json",
+                        data: { searchText: request.term, maxResults: 10 },
+                        success: function (data) {
+                            response($.map(data, function (item) {
+                                return { label: item.firstName, value: item.firstName, id: item.userId }
+                            }))
+                        }
+                    })
+                },
+                select: function (event, ui) {
+                    alert(ui.item ? ("You picked '" + ui.item.label + "' with an ID of " + ui.item.id)
+                        : "Nothing selected, input was " + this.value);
+                }
+            });
+
+        });
+    </script>

@@ -1,0 +1,342 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="2.0" xmlns:edmx="http://schemas.microsoft.com/ado/2008/10/edmx">
+  <!-- EF Runtime content -->
+  <edmx:Runtime>
+    <!-- SSDL content -->
+    <edmx:StorageModels>
+    <Schema Namespace="LifeTubeModel.Store" Alias="Self" Provider="System.Data.SqlClient" ProviderManifestToken="2008" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns="http://schemas.microsoft.com/ado/2009/02/edm/ssdl">
+        <EntityContainer Name="LifeTubeModelStoreContainer">
+          <EntitySet Name="Profile" EntityType="LifeTubeModel.Store.Profile" store:Type="Tables" Schema="LifeTubeAdmin" />
+          <EntitySet Name="UserCircles" EntityType="LifeTubeModel.Store.UserCircles" store:Type="Tables" Schema="LifeTubeAdmin" />
+          <EntitySet Name="Users" EntityType="LifeTubeModel.Store.Users" store:Type="Tables" Schema="LifeTubeAdmin" />
+          <EntitySet Name="Videos" EntityType="LifeTubeModel.Store.Videos" store:Type="Tables" Schema="LifeTubeAdmin" />
+          <AssociationSet Name="FK_Users_Profile" Association="LifeTubeModel.Store.FK_Users_Profile">
+            <End Role="Profile" EntitySet="Profile" />
+            <End Role="Users" EntitySet="Users" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Videos_Users" Association="LifeTubeModel.Store.FK_Videos_Users">
+            <End Role="Users" EntitySet="Users" />
+            <End Role="Videos" EntitySet="Videos" />
+          </AssociationSet>
+        </EntityContainer>
+        <EntityType Name="Profile">
+          <Key>
+            <PropertyRef Name="profileId" />
+          </Key>
+          <Property Name="profileId" Type="int" Nullable="false" StoreGeneratedPattern="Identity" />
+          <Property Name="profileName" Type="varchar" MaxLength="25" />
+          <Property Name="email" Type="varchar" MaxLength="100" />
+          <Property Name="firstName" Type="varchar" MaxLength="25" />
+          <Property Name="lastName" Type="varchar" MaxLength="25" />
+          <Property Name="dateOfBirth" Type="datetime" />
+          <Property Name="streetAddress" Type="varchar" MaxLength="100" />
+          <Property Name="city" Type="varchar" MaxLength="25" />
+          <Property Name="postalCode" Type="varchar" MaxLength="10" />
+          <Property Name="country" Type="varchar" MaxLength="25" />
+          <Property Name="gender" Type="varchar" MaxLength="10" />
+          <Property Name="religion" Type="varchar" MaxLength="15" />
+          <Property Name="homeTown" Type="varchar" MaxLength="25" />
+          <Property Name="studiedAt" Type="varchar" MaxLength="100" />
+          <Property Name="workAt" Type="varchar" MaxLength="100" />
+          <Property Name="createdOn" Type="datetime" />
+          <Property Name="personalContect" Type="varchar" MaxLength="50" />
+          <Property Name="homeContact" Type="varchar" MaxLength="50" />
+          <Property Name="bloodGroup" Type="varchar" MaxLength="10" />
+          <Property Name="birthPlace" Type="varchar" MaxLength="50" />
+          <Property Name="hobby" Type="varchar" MaxLength="50" />
+          <Property Name="lastModifiedOn" Type="datetime" />
+          <Property Name="profilePicture" Type="image" />
+        </EntityType>
+        <EntityType Name="UserCircles">
+          <Key>
+            <PropertyRef Name="userCircleId" />
+          </Key>
+          <Property Name="userCircleId" Type="int" Nullable="false" StoreGeneratedPattern="Identity" />
+          <Property Name="userFrom" Type="int" />
+          <Property Name="userTo" Type="int" />
+          <Property Name="relationship" Type="varchar" MaxLength="50" />
+          <Property Name="createdBy" Type="int" />
+          <Property Name="createdOn" Type="datetime" />
+          <Property Name="lastModifiedBy" Type="int" />
+          <Property Name="lastModifiedDate" Type="datetime" />
+          <Property Name="isAccepted" Type="bit" />
+        </EntityType>
+        <EntityType Name="Users">
+          <Key>
+            <PropertyRef Name="userid" />
+          </Key>
+          <Property Name="userid" Type="int" Nullable="false" StoreGeneratedPattern="Identity" />
+          <Property Name="email" Type="varchar" MaxLength="100" />
+          <Property Name="firstName" Type="varchar" MaxLength="25" />
+          <Property Name="lastName" Type="varchar" MaxLength="25" />
+          <Property Name="profileId" Type="int" />
+          <Property Name="phone" Type="varchar" MaxLength="20" />
+          <Property Name="password" Type="varchar" MaxLength="50" />
+          <Property Name="createdBy" Type="int" />
+          <Property Name="createdDate" Type="datetime" />
+          <Property Name="lastModifiedBy" Type="int" />
+          <Property Name="lastModifiedDate" Type="datetime" />
+          <Property Name="rootUser" Type="bit" />
+          <Property Name="resetPin" Type="varchar" MaxLength="12" />
+        </EntityType>
+        <EntityType Name="Videos">
+          <Key>
+            <PropertyRef Name="videoid" />
+          </Key>
+          <Property Name="videoid" Type="int" Nullable="false" StoreGeneratedPattern="Identity" />
+          <Property Name="videoUrl" Type="varchar(max)" />
+          <Property Name="userid" Type="int" />
+          <Property Name="storedOn" Type="datetime" />
+          <Property Name="videoTitle" Type="varbinary" MaxLength="25" />
+          <Property Name="description" Type="varbinary(max)" />
+          <Property Name="category" Type="varchar" MaxLength="25" />
+        </EntityType>
+        <Association Name="FK_Users_Profile">
+          <End Role="Profile" Type="LifeTubeModel.Store.Profile" Multiplicity="0..1" />
+          <End Role="Users" Type="LifeTubeModel.Store.Users" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Profile">
+              <PropertyRef Name="profileId" />
+            </Principal>
+            <Dependent Role="Users">
+              <PropertyRef Name="profileId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Videos_Users">
+          <End Role="Users" Type="LifeTubeModel.Store.Users" Multiplicity="0..1" />
+          <End Role="Videos" Type="LifeTubeModel.Store.Videos" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Users">
+              <PropertyRef Name="userid" />
+            </Principal>
+            <Dependent Role="Videos">
+              <PropertyRef Name="userid" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+      </Schema></edmx:StorageModels>
+    <!-- CSDL content -->
+    <edmx:ConceptualModels>
+      <Schema Namespace="LifeTubeModel" Alias="Self" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns="http://schemas.microsoft.com/ado/2008/09/edm">
+        <EntityContainer Name="LifeTubeEntities1" annotation:LazyLoadingEnabled="true">
+          <EntitySet Name="Profiles" EntityType="LifeTubeModel.Profile" />
+          <EntitySet Name="UserCircles" EntityType="LifeTubeModel.UserCircle" />
+          <EntitySet Name="Users" EntityType="LifeTubeModel.User" />
+          <AssociationSet Name="FK_Users_Profile" Association="LifeTubeModel.FK_Users_Profile">
+            <End Role="Profile" EntitySet="Profiles" />
+            <End Role="Users" EntitySet="Users" />
+          </AssociationSet>
+          <EntitySet Name="Videos" EntityType="LifeTubeModel.Video" />
+          <AssociationSet Name="FK_Videos_Users" Association="LifeTubeModel.FK_Videos_Users">
+            <End Role="User" EntitySet="Users" />
+            <End Role="Video" EntitySet="Videos" />
+          </AssociationSet>
+        </EntityContainer>
+        <EntityType Name="Profile">
+          <Key>
+            <PropertyRef Name="profileId" />
+          </Key>
+          <Property Name="profileId" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="profileName" Type="String" MaxLength="25" Unicode="false" FixedLength="false" />
+          <Property Name="firstName" Type="String" MaxLength="25" Unicode="false" FixedLength="false" />
+          <Property Name="lastName" Type="String" MaxLength="25" Unicode="false" FixedLength="false" />
+          <Property Name="dateOfBirth" Type="DateTime" Precision="3" />
+          <Property Name="streetAddress" Type="String" MaxLength="100" Unicode="false" FixedLength="false" />
+          <Property Name="city" Type="String" MaxLength="25" Unicode="false" FixedLength="false" />
+          <Property Name="postalCode" Type="String" MaxLength="10" Unicode="false" FixedLength="false" />
+          <Property Name="country" Type="String" MaxLength="25" Unicode="false" FixedLength="false" />
+          <Property Name="gender" Type="String" MaxLength="10" Unicode="false" FixedLength="false" />
+          <Property Name="religion" Type="String" MaxLength="15" Unicode="false" FixedLength="false" />
+          <Property Name="homeTown" Type="String" MaxLength="25" Unicode="false" FixedLength="false" />
+          <Property Name="studiedAt" Type="String" MaxLength="100" Unicode="false" FixedLength="false" />
+          <Property Name="workAt" Type="String" MaxLength="100" Unicode="false" FixedLength="false" />
+          <Property Name="createdOn" Type="DateTime" Precision="3" />
+          <Property Name="personalContect" Type="String" MaxLength="50" Unicode="false" FixedLength="false" />
+          <Property Name="homeContact" Type="String" MaxLength="50" Unicode="false" FixedLength="false" />
+          <Property Name="bloodGroup" Type="String" MaxLength="10" Unicode="false" FixedLength="false" />
+          <Property Name="birthPlace" Type="String" MaxLength="50" Unicode="false" FixedLength="false" />
+          <Property Name="hobby" Type="String" MaxLength="50" Unicode="false" FixedLength="false" />
+          <Property Name="lastModifiedOn" Type="DateTime" Precision="3" />
+          <NavigationProperty Name="Users" Relationship="LifeTubeModel.FK_Users_Profile" FromRole="Profile" ToRole="Users" />
+          <Property Type="String" Name="email" MaxLength="100" FixedLength="false" Unicode="false" />
+          <Property Type="Binary" Name="profilePicture" MaxLength="Max" FixedLength="false" />
+        </EntityType>
+        <EntityType Name="UserCircle">
+          <Key>
+            <PropertyRef Name="userCircleId" />
+          </Key>
+          <Property Name="userCircleId" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="userFrom" Type="Int32" />
+          <Property Name="userTo" Type="Int32" />
+          <Property Name="relationship" Type="String" MaxLength="50" Unicode="false" FixedLength="false" />
+          <Property Name="createdBy" Type="Int32" />
+          <Property Name="createdOn" Type="DateTime" Precision="3" />
+          <Property Name="lastModifiedBy" Type="Int32" />
+          <Property Name="lastModifiedDate" Type="DateTime" Precision="3" />
+          <Property Name="isAccepted" Type="Boolean" />
+        </EntityType>
+        <EntityType Name="User">
+          <Key>
+            <PropertyRef Name="userid" />
+          </Key>
+          <Property Name="userid" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="email" Type="String" MaxLength="100" Unicode="false" FixedLength="false" />
+          <Property Name="firstName" Type="String" MaxLength="25" Unicode="false" FixedLength="false" />
+          <Property Name="lastName" Type="String" MaxLength="25" Unicode="false" FixedLength="false" />
+          <Property Name="profileId" Type="Int32" />
+          <Property Name="phone" Type="String" MaxLength="20" Unicode="false" FixedLength="false" />
+          <Property Name="password" Type="String" MaxLength="50" Unicode="false" FixedLength="false" />
+          <Property Name="createdBy" Type="Int32" />
+          <Property Name="createdDate" Type="DateTime" Precision="3" />
+          <Property Name="lastModifiedBy" Type="Int32" />
+          <Property Name="lastModifiedDate" Type="DateTime" Precision="3" />
+          <Property Name="rootUser" Type="Boolean" />
+          <NavigationProperty Name="Profile" Relationship="LifeTubeModel.FK_Users_Profile" FromRole="Users" ToRole="Profile" />
+          <Property Type="String" Name="resetPin" MaxLength="12" FixedLength="false" Unicode="false" />
+          <NavigationProperty Name="Videos" Relationship="LifeTubeModel.FK_Videos_Users" FromRole="User" ToRole="Video" />
+        </EntityType>
+        <Association Name="FK_Users_Profile">
+          <End Role="Profile" Type="LifeTubeModel.Profile" Multiplicity="0..1" />
+          <End Role="Users" Type="LifeTubeModel.User" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Profile">
+              <PropertyRef Name="profileId" />
+            </Principal>
+            <Dependent Role="Users">
+              <PropertyRef Name="profileId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <EntityType Name="Video">
+          <Key>
+            <PropertyRef Name="videoid" />
+          </Key>
+          <Property Type="Int32" Name="videoid" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Type="String" Name="videoUrl" MaxLength="Max" FixedLength="false" Unicode="false" />
+          <Property Type="Int32" Name="userid" />
+          <Property Type="DateTime" Name="storedOn" Precision="3" />
+          <NavigationProperty Name="User" Relationship="LifeTubeModel.FK_Videos_Users" FromRole="Video" ToRole="User" />
+          <Property Type="Binary" Name="videoTitle" MaxLength="25" FixedLength="false" />
+          <Property Type="Binary" Name="description" MaxLength="Max" FixedLength="false" />
+          <Property Type="String" Name="category" MaxLength="25" FixedLength="false" Unicode="false" />
+        </EntityType>
+        <Association Name="FK_Videos_Users">
+          <End Type="LifeTubeModel.User" Role="User" Multiplicity="0..1" />
+          <End Type="LifeTubeModel.Video" Role="Video" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="User">
+              <PropertyRef Name="userid" />
+            </Principal>
+            <Dependent Role="Video">
+              <PropertyRef Name="userid" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+      </Schema>
+    </edmx:ConceptualModels>
+    <!-- C-S mapping content -->
+    <edmx:Mappings>
+      <Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2008/09/mapping/cs">
+        <EntityContainerMapping StorageEntityContainer="LifeTubeModelStoreContainer" CdmEntityContainer="LifeTubeEntities1">
+          <EntitySetMapping Name="Profiles"><EntityTypeMapping TypeName="LifeTubeModel.Profile"><MappingFragment StoreEntitySet="Profile">
+                <ScalarProperty Name="profilePicture" ColumnName="profilePicture" />
+                <ScalarProperty Name="email" ColumnName="email" />
+                <ScalarProperty Name="profileId" ColumnName="profileId" />
+            <ScalarProperty Name="profileName" ColumnName="profileName" />
+            <ScalarProperty Name="firstName" ColumnName="firstName" />
+            <ScalarProperty Name="lastName" ColumnName="lastName" />
+            <ScalarProperty Name="dateOfBirth" ColumnName="dateOfBirth" />
+            <ScalarProperty Name="streetAddress" ColumnName="streetAddress" />
+            <ScalarProperty Name="city" ColumnName="city" />
+            <ScalarProperty Name="postalCode" ColumnName="postalCode" />
+            <ScalarProperty Name="country" ColumnName="country" />
+            <ScalarProperty Name="gender" ColumnName="gender" />
+            <ScalarProperty Name="religion" ColumnName="religion" />
+            <ScalarProperty Name="homeTown" ColumnName="homeTown" />
+            <ScalarProperty Name="studiedAt" ColumnName="studiedAt" />
+            <ScalarProperty Name="workAt" ColumnName="workAt" />
+            <ScalarProperty Name="createdOn" ColumnName="createdOn" />
+            <ScalarProperty Name="personalContect" ColumnName="personalContect" />
+            <ScalarProperty Name="homeContact" ColumnName="homeContact" />
+            <ScalarProperty Name="bloodGroup" ColumnName="bloodGroup" />
+            <ScalarProperty Name="birthPlace" ColumnName="birthPlace" />
+            <ScalarProperty Name="hobby" ColumnName="hobby" />
+            <ScalarProperty Name="lastModifiedOn" ColumnName="lastModifiedOn" />
+          </MappingFragment></EntityTypeMapping></EntitySetMapping>
+          <EntitySetMapping Name="UserCircles"><EntityTypeMapping TypeName="LifeTubeModel.UserCircle"><MappingFragment StoreEntitySet="UserCircles">
+            <ScalarProperty Name="userCircleId" ColumnName="userCircleId" />
+            <ScalarProperty Name="userFrom" ColumnName="userFrom" />
+            <ScalarProperty Name="userTo" ColumnName="userTo" />
+            <ScalarProperty Name="relationship" ColumnName="relationship" />
+            <ScalarProperty Name="createdBy" ColumnName="createdBy" />
+            <ScalarProperty Name="createdOn" ColumnName="createdOn" />
+            <ScalarProperty Name="lastModifiedBy" ColumnName="lastModifiedBy" />
+            <ScalarProperty Name="lastModifiedDate" ColumnName="lastModifiedDate" />
+            <ScalarProperty Name="isAccepted" ColumnName="isAccepted" />
+          </MappingFragment></EntityTypeMapping></EntitySetMapping>
+          <EntitySetMapping Name="Users"><EntityTypeMapping TypeName="LifeTubeModel.User"><MappingFragment StoreEntitySet="Users">
+            <ScalarProperty Name="resetPin" ColumnName="resetPin" />
+                <ScalarProperty Name="userid" ColumnName="userid" />
+            <ScalarProperty Name="email" ColumnName="email" />
+            <ScalarProperty Name="firstName" ColumnName="firstName" />
+            <ScalarProperty Name="lastName" ColumnName="lastName" />
+            <ScalarProperty Name="profileId" ColumnName="profileId" />
+            <ScalarProperty Name="phone" ColumnName="phone" />
+            <ScalarProperty Name="password" ColumnName="password" />
+            <ScalarProperty Name="createdBy" ColumnName="createdBy" />
+            <ScalarProperty Name="createdDate" ColumnName="createdDate" />
+            <ScalarProperty Name="lastModifiedBy" ColumnName="lastModifiedBy" />
+            <ScalarProperty Name="lastModifiedDate" ColumnName="lastModifiedDate" />
+            <ScalarProperty Name="rootUser" ColumnName="rootUser" />
+          </MappingFragment></EntityTypeMapping></EntitySetMapping>
+          <EntitySetMapping Name="Videos">
+            <EntityTypeMapping TypeName="LifeTubeModel.Video">
+              <MappingFragment StoreEntitySet="Videos">
+                <ScalarProperty Name="category" ColumnName="category" />
+                <ScalarProperty Name="description" ColumnName="description" />
+                <ScalarProperty Name="videoTitle" ColumnName="videoTitle" />
+                <ScalarProperty Name="storedOn" ColumnName="storedOn" />
+                <ScalarProperty Name="userid" ColumnName="userid" />
+                <ScalarProperty Name="videoUrl" ColumnName="videoUrl" />
+                <ScalarProperty Name="videoid" ColumnName="videoid" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+        </EntityContainerMapping>
+      </Mapping>
+    </edmx:Mappings>
+  </edmx:Runtime>
+  <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <Designer xmlns="http://schemas.microsoft.com/ado/2008/10/edmx">
+    <Connection>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="MetadataArtifactProcessing" Value="EmbedInOutputAssembly" />
+      </DesignerInfoPropertySet>
+    </Connection>
+    <Options>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="ValidateOnBuild" Value="true" />
+        <DesignerProperty Name="EnablePluralization" Value="True" />
+        <DesignerProperty Name="IncludeForeignKeysInModel" Value="True" />
+      </DesignerInfoPropertySet>
+    </Options>
+    <!-- Diagram content (shape and connector positions) -->
+    <Diagrams>
+      <Diagram Name="LifeTubeEntities" ZoomLevel="65">
+        <EntityTypeShape EntityType="LifeTubeModel.Profile" Width="1.5" PointX="0.75" PointY="1" Height="5.634013671875" IsExpanded="true" />
+        <EntityTypeShape EntityType="LifeTubeModel.UserCircle" Width="1.5" PointX="5.25" PointY="2" Height="2.7427376302083322" IsExpanded="true" />
+        <EntityTypeShape EntityType="LifeTubeModel.User" Width="1.5" PointX="3" PointY="1.625" Height="3.4001269531249996" IsExpanded="true" />
+        <AssociationConnector Association="LifeTubeModel.FK_Users_Profile" ManuallyRouted="false">
+          <ConnectorPoint PointX="2.25" PointY="3.7689518229166659" />
+          <ConnectorPoint PointX="3" PointY="3.7689518229166659" />
+        </AssociationConnector>
+        <EntityTypeShape EntityType="LifeTubeModel.Video" Width="1.5" PointX="5.25" PointY="5.5" Height="1.9802864583333326" />
+        <AssociationConnector Association="LifeTubeModel.FK_Videos_Users" >
+          <ConnectorPoint PointX="4.5" PointY="5.7064518229166659" />
+          <ConnectorPoint PointX="5.25" PointY="5.7064518229166659" />
+        </AssociationConnector>
+      </Diagram>
+    </Diagrams>
+  </Designer>
+</edmx:Edmx>

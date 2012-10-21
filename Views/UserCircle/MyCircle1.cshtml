@@ -1,0 +1,19 @@
+﻿@model LifeTube.Models.UsersAndCircleModel
+
+
+
+@{
+    ViewBag.Title = "MyCircle1";
+    Layout = "~/Views/Shared/_Layout1.cshtml";
+}
+
+<h2>MyCircle1</h2>
+@*
+@{Html.RenderPartial("MyCircle", Model.UsersModel);}
+@{Html.RenderPartial("GetAllUsers", Model.UsersModel);}
+*@
+
+@while(ViewData["Names"]!=null)
+{
+   @ViewData["Names"]  
+}

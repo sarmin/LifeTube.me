@@ -1,0 +1,99 @@
+﻿@model IEnumerable<LifeTube.Models.UserCircleModel>
+@using LifeTube.Models
+
+       
+   
+@{
+    ViewBag.Title = "MyCircle";
+    Layout = "~/Views/Shared/_Layout1.cshtml";
+}
+
+<br />
+<h2>MyCircle</h2> <br />Search by name: 
+<input type="text" id="firstName" /><br /><br />
+
+<table>
+    <tr>
+        <th></th>
+        
+        <th>
+            First Name
+        </th>
+        
+        <th>
+            Relationship
+        </th>
+    </tr>
+
+@foreach (var item in Model) {
+    <tr>
+        <td>
+           @Html.ActionLink("Edit", "Edit", new { /* id=item.PrimaryKey */ }) |
+           
+            @Html.ActionLink("Delete", "Delete", new { /* id=item.PrimaryKey */ })
+        </td>
+       
+        <td>
+           @Html.ActionLink(item.firstName, "Profile", "Profile", new { id=item.userCircleId })
+        </td>
+        
+        <td>
+            @item.relationship
+        </td>
+       
+    </tr>
+}
+</table>
+<br />
+@{
+    LifeTubeEntities1 db = new LifeTube.Models.LifeTubeEntities1();
+    var allusr=(from u in db.Users where u.userid!=GlobalVariables.UserId select u).ToList();
+    
+    foreach(var item1 in allusr)
+    {  
+        <table>      
+            <tr>
+                <td>
+                    @Html.ActionLink(item1.firstName,"ViewOthersProfile", new{id=item1.userid})
+                </td>   
+            </tr> 
+        </table>
+    }
+    
+ }
+@*@Html.Partial("GetAlldUsers")*@
+
+<script type="text/javascript" language="javascript">
+    $(function () {
+
+        $("#firstName").autocomplete({
+            source: function (request, response) {
+                $.ajax({
+                    url: '/UserCircle/SearchUserNames', type: "POST", dataType: "json",
+                    data: { term: request.term },
+                    success: function (data) {
+                        response($.map(data, function (item) {
+                            return { label: '<li>@Url.Action("LogOn", "Accounts")' +item.firstName+ '<li>', value: item.firstName, id: item.userId};
+                        }))
+                    }
+                })
+            },
+            minLength: 3,
+            maxLength:10,
+            
+            select: function (event, ui) {
+                console.debug(ui.item.id);
+                $("firstName").text(ui.item.userId);
+            }
+
+        });
+    });
+</script>
+
+
+
+
+
+         
+
+

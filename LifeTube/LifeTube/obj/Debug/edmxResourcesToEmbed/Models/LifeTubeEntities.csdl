@@ -1,22 +1,66 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
-<Schema Namespace="DB_46167_lifetubeModel" Alias="Self" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns="http://schemas.microsoft.com/ado/2008/09/edm">
-  <EntityContainer Name="DB_46167_lifetubeEntities" annotation:LazyLoadingEnabled="true">
-    <EntitySet Name="Profiles" EntityType="DB_46167_lifetubeModel.Profile" />
-    <EntitySet Name="Users" EntityType="DB_46167_lifetubeModel.User" />
-    <AssociationSet Name="FK_Users_Profile" Association="DB_46167_lifetubeModel.FK_Users_Profile">
+<Schema Namespace="LifeTubeModel" Alias="Self" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns="http://schemas.microsoft.com/ado/2008/09/edm">
+  <EntityContainer Name="LifeTubeEntities1" annotation:LazyLoadingEnabled="true">
+    <EntitySet Name="Profiles" EntityType="LifeTubeModel.Profile" />
+    <EntitySet Name="UserCircles" EntityType="LifeTubeModel.UserCircle" />
+    <EntitySet Name="Users" EntityType="LifeTubeModel.User" />
+    <AssociationSet Name="FK_Users_Profile" Association="LifeTubeModel.FK_Users_Profile">
       <End Role="Profile" EntitySet="Profiles" />
       <End Role="Users" EntitySet="Users" />
+    </AssociationSet>
+    <AssociationSet Name="FK_UserCircles_Users" Association="LifeTubeModel.FK_UserCircles_Users">
+      <End Role="Users" EntitySet="Users" />
+      <End Role="UserCircles" EntitySet="UserCircles" />
+    </AssociationSet>
+    <AssociationSet Name="FK_UserCircles_Users1" Association="LifeTubeModel.FK_UserCircles_Users1">
+      <End Role="Users" EntitySet="Users" />
+      <End Role="UserCircles" EntitySet="UserCircles" />
     </AssociationSet>
   </EntityContainer>
   <EntityType Name="Profile">
     <Key>
-      <PropertyRef Name="profileid" />
+      <PropertyRef Name="profileId" />
     </Key>
-    <Property Name="profileid" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
-    <Property Name="firstName" Type="String" MaxLength="100" Unicode="false" FixedLength="false" />
-    <Property Name="lastName" Type="String" MaxLength="100" Unicode="false" FixedLength="false" />
+    <Property Name="profileId" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="profileName" Type="String" MaxLength="25" Unicode="false" FixedLength="false" />
+    <Property Name="firstName" Type="String" MaxLength="25" Unicode="false" FixedLength="false" />
+    <Property Name="lastName" Type="String" MaxLength="25" Unicode="false" FixedLength="false" />
+    <Property Name="dateOfBirth" Type="DateTime" />
+    <Property Name="streetAddress" Type="String" MaxLength="100" Unicode="false" FixedLength="false" />
+    <Property Name="city" Type="String" MaxLength="25" Unicode="false" FixedLength="false" />
+    <Property Name="postalCode" Type="String" MaxLength="10" Unicode="false" FixedLength="false" />
+    <Property Name="country" Type="String" MaxLength="25" Unicode="false" FixedLength="false" />
+    <Property Name="gender" Type="String" MaxLength="10" Unicode="false" FixedLength="false" />
+    <Property Name="religion" Type="String" MaxLength="15" Unicode="false" FixedLength="false" />
+    <Property Name="homeTown" Type="String" MaxLength="25" Unicode="false" FixedLength="false" />
+    <Property Name="studiedAt" Type="String" MaxLength="100" Unicode="false" FixedLength="false" />
+    <Property Name="workAt" Type="String" MaxLength="100" Unicode="false" FixedLength="false" />
     <Property Name="createdOn" Type="DateTime" />
-    <NavigationProperty Name="Users" Relationship="DB_46167_lifetubeModel.FK_Users_Profile" FromRole="Profile" ToRole="Users" />
+    <Property Name="personalContect" Type="String" MaxLength="50" Unicode="false" FixedLength="false" />
+    <Property Name="homeContact" Type="String" MaxLength="50" Unicode="false" FixedLength="false" />
+    <Property Name="bloodGroup" Type="String" MaxLength="10" Unicode="false" FixedLength="false" />
+    <Property Name="birthPlace" Type="String" MaxLength="50" Unicode="false" FixedLength="false" />
+    <Property Name="hobby" Type="String" MaxLength="50" Unicode="false" FixedLength="false" />
+    <Property Name="lastModifiedOn" Type="DateTime" />
+    <NavigationProperty Name="Users" Relationship="LifeTubeModel.FK_Users_Profile" FromRole="Profile" ToRole="Users" />
+    <Property Type="String" Name="email" MaxLength="100" FixedLength="false" Unicode="false" />
+    <Property Type="Binary" Name="profilePicture" MaxLength="Max" FixedLength="false" />
+  </EntityType>
+  <EntityType Name="UserCircle">
+    <Key>
+      <PropertyRef Name="userCircleId" />
+    </Key>
+    <Property Name="userCircleId" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="userFrom" Type="Int32" />
+    <Property Name="userTo" Type="Int32" />
+    <Property Name="relationship" Type="String" MaxLength="50" Unicode="false" FixedLength="false" />
+    <Property Name="createdBy" Type="Int32" />
+    <Property Name="createdOn" Type="DateTime" />
+    <Property Name="lastModifiedBy" Type="Int32" />
+    <Property Name="lastModifiedDate" Type="DateTime" />
+    <Property Name="isAccepted" Type="Boolean" />
+    <NavigationProperty Name="User" Relationship="LifeTubeModel.FK_UserCircles_Users" FromRole="UserCircles" ToRole="Users" />
+    <NavigationProperty Name="User1" Relationship="LifeTubeModel.FK_UserCircles_Users1" FromRole="UserCircles" ToRole="Users" />
   </EntityType>
   <EntityType Name="User">
     <Key>
@@ -24,27 +68,54 @@
     </Key>
     <Property Name="userid" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
     <Property Name="email" Type="String" MaxLength="100" Unicode="false" FixedLength="false" />
-    <Property Name="password" Type="String" Nullable="false" MaxLength="50" Unicode="false" FixedLength="false" />
-    <Property Name="firstName" Type="String" Nullable="false" MaxLength="25" Unicode="false" FixedLength="false" />
-    <Property Name="lastName" Type="String" Nullable="false" MaxLength="25" Unicode="false" FixedLength="false" />
+    <Property Name="firstName" Type="String" MaxLength="25" Unicode="false" FixedLength="false" />
+    <Property Name="lastName" Type="String" MaxLength="25" Unicode="false" FixedLength="false" />
+    <Property Name="profileId" Type="Int32" />
     <Property Name="phone" Type="String" MaxLength="20" Unicode="false" FixedLength="false" />
-    <Property Name="profileid" Type="Int32" />
-    <Property Name="rootUser" Type="Boolean" />
+    <Property Name="password" Type="String" MaxLength="50" Unicode="false" FixedLength="false" />
     <Property Name="createdBy" Type="Int32" />
     <Property Name="createdDate" Type="DateTime" />
     <Property Name="lastModifiedBy" Type="Int32" />
     <Property Name="lastModifiedDate" Type="DateTime" />
-    <NavigationProperty Name="Profile" Relationship="DB_46167_lifetubeModel.FK_Users_Profile" FromRole="Users" ToRole="Profile" />
+    <Property Name="rootUser" Type="Boolean" />
+    <NavigationProperty Name="Profile" Relationship="LifeTubeModel.FK_Users_Profile" FromRole="Users" ToRole="Profile" />
+    <NavigationProperty Name="UserCircles" Relationship="LifeTubeModel.FK_UserCircles_Users" FromRole="Users" ToRole="UserCircles" />
+    <NavigationProperty Name="UserCircles1" Relationship="LifeTubeModel.FK_UserCircles_Users1" FromRole="Users" ToRole="UserCircles" />
+    <Property Type="String" Name="resetPin" MaxLength="12" FixedLength="false" Unicode="false" />
   </EntityType>
   <Association Name="FK_Users_Profile">
-    <End Role="Profile" Type="DB_46167_lifetubeModel.Profile" Multiplicity="0..1" />
-    <End Role="Users" Type="DB_46167_lifetubeModel.User" Multiplicity="*" />
+    <End Role="Profile" Type="LifeTubeModel.Profile" Multiplicity="0..1" />
+    <End Role="Users" Type="LifeTubeModel.User" Multiplicity="*" />
     <ReferentialConstraint>
       <Principal Role="Profile">
-        <PropertyRef Name="profileid" />
+        <PropertyRef Name="profileId" />
       </Principal>
       <Dependent Role="Users">
-        <PropertyRef Name="profileid" />
+        <PropertyRef Name="profileId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_UserCircles_Users">
+    <End Role="Users" Type="LifeTubeModel.User" Multiplicity="0..1" />
+    <End Role="UserCircles" Type="LifeTubeModel.UserCircle" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Users">
+        <PropertyRef Name="userid" />
+      </Principal>
+      <Dependent Role="UserCircles">
+        <PropertyRef Name="userFrom" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_UserCircles_Users1">
+    <End Role="Users" Type="LifeTubeModel.User" Multiplicity="0..1" />
+    <End Role="UserCircles" Type="LifeTubeModel.UserCircle" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Users">
+        <PropertyRef Name="userid" />
+      </Principal>
+      <Dependent Role="UserCircles">
+        <PropertyRef Name="userTo" />
       </Dependent>
     </ReferentialConstraint>
   </Association>

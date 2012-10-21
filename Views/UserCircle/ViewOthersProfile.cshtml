@@ -1,0 +1,194 @@
+﻿@model LifeTube.Models.Profile
+          
+@using LifeTube.Controllers
+@using LifeTube.Models
+
+@{
+    ViewBag.Title = "ViewOthersProfile";
+    Layout = "~/Views/Shared/_Layout1.cshtml";
+}
+<br /><br />
+<h2>@Model.firstName @Model.lastName</h2>
+
+   
+<p style="width:90%; text-align:right">
+    
+    <input type="submit" value="Send Message" class="button medium gray mt08" />
+    @TempData["message"]
+      
+
+    @using (Html.BeginForm("AddToCircle", "UserCircle", FormMethod.Post, new { id = GlobalVariables.UidForCircle }))  
+    {       
+        <input type="submit" name="Add To Circle" value="Add to Circle" class="button medium gray mt08" />
+    }
+  
+</p>
+
+  <table style="width:90%">  
+      <tr>
+        <th style=" width:20%">
+           Profile Id
+        </th>
+        <td>
+            @Html.DisplayFor(modelItem => @Model.profileId)
+        </td>
+    </tr>
+    <tr>
+        <th style=" width:20%">
+           First Name
+        </th>
+        <td>
+            @Html.DisplayFor(modelItem => @Model.firstName)
+        </td>
+    </tr>
+    <tr>
+        <th>
+            Last Name
+        </th>
+        <td>
+            @Html.DisplayFor(modelItem => modelItem.lastName)
+        </td>
+    </tr>
+    <tr>
+        <th>
+            Date of Birth
+        </th>
+        <td>
+            @Html.DisplayFor(modelItem => modelItem.dateOfBirth)
+        </td>
+    </tr>
+    <tr>
+        <th>
+            Street Address
+        </th>
+        <td>
+            @Html.DisplayFor(modelItem => modelItem.streetAddress)
+        </td>
+    </tr>
+    <tr>
+        <th>
+           City
+        </th>
+        <td>
+            @Html.DisplayFor(modelItem => modelItem.city)
+        </td>
+    </tr>
+    <tr>
+        <th>
+           Postal Code
+        </th>
+        <td>
+            @Html.DisplayFor(modelItem => modelItem.postalCode)
+        </td>
+    </tr>
+    <tr>
+        <th>
+           Country
+        </th>
+        <td>
+            @Html.DisplayFor(modelItem => modelItem.country)
+        </td>
+    </tr>
+     <tr>
+        <th>
+           Gender
+        </th>
+        <td>
+            @Html.DisplayFor(modelItem => modelItem.gender)
+        </td>
+    </tr>
+      <tr>
+        <th>
+           Religion
+        </th>
+        <td>
+            @Html.DisplayFor(modelItem => modelItem.religion)
+        </td>
+    </tr>
+      <tr>
+        <th>
+           Home town
+        </th>
+        <td>
+            @Html.DisplayFor(modelItem => modelItem.homeTown)
+        </td>
+    </tr>
+      <tr>
+        <th>
+           Studied At
+        </th>
+        <td>
+            @Html.DisplayFor(modelItem => modelItem.studiedAt)
+        </td>
+    </tr>
+     <tr>
+        <th>
+           Work At
+        </th>
+        <td>
+            @Html.DisplayFor(modelItem => modelItem.workAt)
+        </td>
+    </tr
+     <tr>
+        <th>
+           Personal Contact
+        </th>
+        <td>
+            @Html.DisplayFor(modelItem => modelItem.personalContect)
+        </td>
+    </tr>
+      <tr>
+        <th>
+           Home Contact
+        </th>
+        <td>
+            @Html.DisplayFor(modelItem => modelItem.homeContact)
+        </td>
+    </tr>
+      <tr>
+        <th>
+           Blood Group
+        </th>
+        <td>
+            @Html.DisplayFor(modelItem => modelItem.bloodGroup)
+        </td>
+    </tr>
+      <tr>
+        <th>
+           Hobby
+        </th>
+        <td>
+            @Html.DisplayFor(modelItem => modelItem.hobby)
+        </td>
+    </tr>
+</table>
+
+
+    
+@*<script type="text/javascript">
+    
+    $.ajax({
+        type: "POST",
+        url: "/UserCircle/AddToCircle"  //Controller/ActionMethod  
+});
+
+</script>
+<script type="text/javascript">
+    function Test() {
+
+        var itemId = $('#MyButton').attr('itemid');
+        var url = '@Url.Action("AddToCircle", "UserCircle")';
+        var data = { Id:itemId };
+        $.post(url, data, function (result) {
+            var id = '#postedFor' + postId;
+            $(id).html(result);
+        });                 
+    );
+    }
+
+</script>*@
+
+
+@*  *@
+
+

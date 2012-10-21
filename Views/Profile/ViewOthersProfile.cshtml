@@ -1,0 +1,66 @@
+﻿@model LifeTube.Models.ProfileModel
+
+@{
+    ViewBag.Title = "ViewOthersProfile";
+    Layout = "~/Views/Shared/_Layout1.cshtml";
+}
+
+<h2>ViewOthersProfile</h2>
+
+<fieldset>
+    <legend>ProfileModel</legend>
+
+
+    <div class="display-label">firstName</div>
+    <div class="display-field">@Model.firstName</div>
+
+    <div class="display-label">lastName</div>
+    <div class="display-field">@Model.lastName</div>
+
+    <div class="display-label">dateOfBirth</div>
+    <div class="display-field">@String.Format("{0:g}", Model.dateOfBirth)</div>
+
+    <div class="display-label">streetAddress</div>
+    <div class="display-field">@Model.streetAddress</div>
+
+    <div class="display-label">city</div>
+    <div class="display-field">@Model.city</div>
+
+    <div class="display-label">postalCode</div>
+    <div class="display-field">@Model.postalCode</div>
+
+    <div class="display-label">country</div>
+    <div class="display-field">@Model.country</div>
+
+    <div class="display-label">gender</div>
+    <div class="display-field">@Model.gender</div>
+
+    <div class="display-label">religion</div>
+    <div class="display-field">@Model.religion</div>
+
+    <div class="display-label">homeTown</div>
+    <div class="display-field">@Model.homeTown</div>
+
+    <div class="display-label">studiedAt</div>
+    <div class="display-field">@Model.studiedAt</div>
+
+    <div class="display-label">workAt</div>
+    <div class="display-field">@Model.workAt</div>
+
+    <div class="display-label">personalContact</div>
+    <div class="display-field">@Model.personalContact</div>
+
+    <div class="display-label">homeContact</div>
+    <div class="display-field">@Model.homeContact</div>
+
+    <div class="display-label">bloodGroup</div>
+    <div class="display-field">@Model.bloodGroup</div>
+
+    <div class="display-label">birthPlace</div>
+    <div class="display-field">@Model.birthPlace</div>
+
+    <div class="display-label">hobby</div>
+    <div class="display-field">@Model.hobby</div>
+
+    
+</fieldset>

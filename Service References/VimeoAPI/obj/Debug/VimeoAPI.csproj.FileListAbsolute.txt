@@ -1,0 +1,4 @@
+C:\Users\User\Downloads\VimeoAPI\bin\Debug\VimeoAPI.dll
+C:\Users\User\Downloads\VimeoAPI\bin\Debug\VimeoAPI.pdb
+C:\Users\User\Downloads\VimeoAPI\obj\Debug\VimeoAPI.dll
+C:\Users\User\Downloads\VimeoAPI\obj\Debug\VimeoAPI.pdb

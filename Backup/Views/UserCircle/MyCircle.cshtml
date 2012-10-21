@@ -1,0 +1,77 @@
+﻿@model IEnumerable<dynamic>
+       
+@{
+    ViewBag.Title = "MyCircle";
+    Layout = "~/Views/Shared/_Layout1.cshtml";
+}
+<br />
+<h2>MyCircle</h2> <br />Search by name: 
+<input type="text" id="firstName" /><br /><br />
+
+<table>
+    <tr>
+        <th></th>
+        
+        <th>
+            First Name
+        </th>
+        
+        <th>
+            Relationship
+        </th>
+    </tr>
+
+@foreach (var item in Model) {
+    <tr>
+        <td>
+           @Html.ActionLink("Edit", "Edit", new { /* id=item.PrimaryKey */ }) |
+           
+            @Html.ActionLink("Delete", "Delete", new { /* id=item.PrimaryKey */ })
+        </td>
+       
+        <td>
+            @item.firstName           
+        </td>
+        
+        <td>
+            @item.relationship
+        </td>
+       
+    </tr>
+}
+
+</table>
+
+<script type="text/javascript" language="javascript">
+       $(function () {
+
+        $("#firstName").autocomplete({
+            source: function (request, response) {
+                $.ajax({
+                    url: '/UserCircle/SearchUserNames', type: "POST", dataType: "json",
+                    data: { term: request.term },
+                    success: function (data) {
+                        response($.map(data, function (item) {
+                            return { label: item.firstName , value: item.firstName, id: item.userId};
+                        }))
+                    }
+                })
+            },
+            //minLength: 2,
+            maxLength:10,
+            
+            select: function (event, ui) {
+                console.debug(ui.item.id);
+                $("firstName").text(ui.item.userId);
+            }
+
+        });
+ </script>
+
+
+
+
+
+         
+
+

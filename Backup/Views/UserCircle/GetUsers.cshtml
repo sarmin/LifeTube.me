@@ -1,0 +1,35 @@
+﻿@*@model IEnumerable<LifeTube.Models.GetUserModel>*@
+ @model IEnumerable<dynamic>
+@{
+    ViewBag.Title = "GetUsers";
+    Layout = "~/Views/Shared/_Layout1.cshtml";
+}
+
+<h2>GetUsers</h2>
+
+<p>
+    @Html.ActionLink("Create New", "Create")
+</p>
+<table>
+    <tr>
+        <th></th>
+        <th>
+            firstName
+        </th>
+    </tr>
+
+@foreach (var item in Model) {
+    <tr>
+        <td>
+            @*@Html.ActionLink("Add To Circle", "AddToCircle", new { id=item.userid }) *@
+            <input type="submit", value="Add", onclick="AddToCircle()"/> 
+           
+        </td>
+        <td>
+            @item.firstName
+        </td>
+    </tr>
+}
+
+</table>
+

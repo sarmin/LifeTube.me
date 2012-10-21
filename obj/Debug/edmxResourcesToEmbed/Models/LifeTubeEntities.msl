@@ -1,0 +1,81 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2008/09/mapping/cs">
+  <EntityContainerMapping StorageEntityContainer="LifeTubeModelStoreContainer" CdmEntityContainer="LifeTubeEntities1">
+    <EntitySetMapping Name="Profiles">
+      <EntityTypeMapping TypeName="LifeTubeModel.Profile">
+        <MappingFragment StoreEntitySet="Profile">
+          <ScalarProperty Name="profilePicture" ColumnName="profilePicture" />
+          <ScalarProperty Name="email" ColumnName="email" />
+          <ScalarProperty Name="profileId" ColumnName="profileId" />
+          <ScalarProperty Name="profileName" ColumnName="profileName" />
+          <ScalarProperty Name="firstName" ColumnName="firstName" />
+          <ScalarProperty Name="lastName" ColumnName="lastName" />
+          <ScalarProperty Name="dateOfBirth" ColumnName="dateOfBirth" />
+          <ScalarProperty Name="streetAddress" ColumnName="streetAddress" />
+          <ScalarProperty Name="city" ColumnName="city" />
+          <ScalarProperty Name="postalCode" ColumnName="postalCode" />
+          <ScalarProperty Name="country" ColumnName="country" />
+          <ScalarProperty Name="gender" ColumnName="gender" />
+          <ScalarProperty Name="religion" ColumnName="religion" />
+          <ScalarProperty Name="homeTown" ColumnName="homeTown" />
+          <ScalarProperty Name="studiedAt" ColumnName="studiedAt" />
+          <ScalarProperty Name="workAt" ColumnName="workAt" />
+          <ScalarProperty Name="createdOn" ColumnName="createdOn" />
+          <ScalarProperty Name="personalContect" ColumnName="personalContect" />
+          <ScalarProperty Name="homeContact" ColumnName="homeContact" />
+          <ScalarProperty Name="bloodGroup" ColumnName="bloodGroup" />
+          <ScalarProperty Name="birthPlace" ColumnName="birthPlace" />
+          <ScalarProperty Name="hobby" ColumnName="hobby" />
+          <ScalarProperty Name="lastModifiedOn" ColumnName="lastModifiedOn" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="UserCircles">
+      <EntityTypeMapping TypeName="LifeTubeModel.UserCircle">
+        <MappingFragment StoreEntitySet="UserCircles">
+          <ScalarProperty Name="userCircleId" ColumnName="userCircleId" />
+          <ScalarProperty Name="userFrom" ColumnName="userFrom" />
+          <ScalarProperty Name="userTo" ColumnName="userTo" />
+          <ScalarProperty Name="relationship" ColumnName="relationship" />
+          <ScalarProperty Name="createdBy" ColumnName="createdBy" />
+          <ScalarProperty Name="createdOn" ColumnName="createdOn" />
+          <ScalarProperty Name="lastModifiedBy" ColumnName="lastModifiedBy" />
+          <ScalarProperty Name="lastModifiedDate" ColumnName="lastModifiedDate" />
+          <ScalarProperty Name="isAccepted" ColumnName="isAccepted" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Users">
+      <EntityTypeMapping TypeName="LifeTubeModel.User">
+        <MappingFragment StoreEntitySet="Users">
+          <ScalarProperty Name="resetPin" ColumnName="resetPin" />
+          <ScalarProperty Name="userid" ColumnName="userid" />
+          <ScalarProperty Name="email" ColumnName="email" />
+          <ScalarProperty Name="firstName" ColumnName="firstName" />
+          <ScalarProperty Name="lastName" ColumnName="lastName" />
+          <ScalarProperty Name="profileId" ColumnName="profileId" />
+          <ScalarProperty Name="phone" ColumnName="phone" />
+          <ScalarProperty Name="password" ColumnName="password" />
+          <ScalarProperty Name="createdBy" ColumnName="createdBy" />
+          <ScalarProperty Name="createdDate" ColumnName="createdDate" />
+          <ScalarProperty Name="lastModifiedBy" ColumnName="lastModifiedBy" />
+          <ScalarProperty Name="lastModifiedDate" ColumnName="lastModifiedDate" />
+          <ScalarProperty Name="rootUser" ColumnName="rootUser" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Videos">
+      <EntityTypeMapping TypeName="LifeTubeModel.Video">
+        <MappingFragment StoreEntitySet="Videos">
+          <ScalarProperty Name="category" ColumnName="category" />
+          <ScalarProperty Name="description" ColumnName="description" />
+          <ScalarProperty Name="videoTitle" ColumnName="videoTitle" />
+          <ScalarProperty Name="storedOn" ColumnName="storedOn" />
+          <ScalarProperty Name="userid" ColumnName="userid" />
+          <ScalarProperty Name="videoUrl" ColumnName="videoUrl" />
+          <ScalarProperty Name="videoid" ColumnName="videoid" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+  </EntityContainerMapping>
+</Mapping>

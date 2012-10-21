@@ -1,0 +1,15 @@
+﻿@{
+    ViewBag.Title = "Facebook Login";
+}
+
+<h2>FacebookLogin</h2>
+<div>
+    <fb:login-button></fb:login-button>
+</div>
+
+@if(Request.IsAuthenticated) {
+    <text>Welcome <strong>@User.Identity.Name</strong>!
+    [ @Html.ActionLink("Log Off from Facebook", "LogOff", "Account") ]</text>
+}
+
+

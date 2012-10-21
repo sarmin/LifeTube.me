@@ -1,0 +1,101 @@
+﻿@model IEnumerable<LifeTube.Models.UsersModel>
+
+@{
+    ViewBag.Title = "GetAllUsers";
+}
+
+<h2>GetAllUsers</h2>
+
+
+<table>
+    <tr>
+        @*<th></th>
+        <th>
+            userId
+        </th>
+        <th>
+            email
+        </th>
+        <th>
+            password
+        </th>*@
+        <th>
+            firstName
+        </th>
+        @*<th>
+            lastName
+        </th>
+        <th>
+            phone
+        </th>
+        <th>
+            profileid
+        </th>
+        <th>
+            rootUser
+        </th>
+        <th>
+            createdBy
+        </th>
+        <th>
+            createdDate
+        </th>
+        <th>
+            lastModifiedBy
+        </th>
+        <th>
+            lastModifiedDate
+        </th>
+        <th>
+            PasswordConfirm
+        </th>*@
+    </tr>
+
+@foreach (var item in Model) {
+    <tr>
+        
+        @*<td>
+            @item.userId
+        </td>
+        <td>
+            @item.email
+        </td>
+        <td>
+            @item.password
+        </td>*@
+        <td>
+          @Html.ActionLink(item.firstName, "ViewOthersProfile", "Profile", new { id = item.userId })
+         
+        </td>
+       @* <td>
+            @item.lastName
+        </td>
+        <td>
+            @item.phone
+        </td>
+        <td>
+            @item.profileid
+        </td>
+        <td>
+            @item.rootUser
+        </td>
+        <td>
+            @item.createdBy
+        </td>
+        <td>
+            @String.Format("{0:g}", item.createdDate)
+        </td>
+        <td>
+            @item.lastModifiedBy
+        </td>
+        <td>
+            @String.Format("{0:g}", item.lastModifiedDate)
+        </td>
+        <td>
+            @item.PasswordConfirm
+        </td>*@
+    </tr>
+}
+
+</table>
+

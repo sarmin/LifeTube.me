@@ -1,0 +1,25 @@
+﻿@using LifeTube.Controllers
+@using Google.GData.Extensions.MediaRss
+@using Google.GData.Client;
+@using Google.GData.Extensions;
+@using Google.GData.YouTube;
+@using Google.YouTube;
+@{
+    ViewBag.Title = "";
+    Layout = "~/Views/Shared/_Layout1.cshtml";
+}
+
+<h2>GetRequest</h2>
+
+ @Html.BeginForm("GetRequest1", "Video", FormMethod.Post)
+    {       
+        <input type="file" name="file" />
+	    <input type="hidden" name="token" value="<%= tokenValue %>" />
+	    <input type="submit" value="Upload!" />
+    }
+	 
+	@*<form action="<%= postUrl %>?nexturl=http://localhost/upload/success" method="post" enctype="multipart/form-data">
+	    <input type="file" name="file" />
+	    <input type="hidden" name="token" value="<%= tokenValue %>" />
+	    <input type="submit" value="Upload!" />
+	</form>*@

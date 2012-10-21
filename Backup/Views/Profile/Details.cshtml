@@ -1,0 +1,29 @@
+﻿@model LifeTube.Models.ProfileModel
+
+@{
+    ViewBag.Title = "Details";
+    Layout = "~/Views/Shared/_Layout1.cshtml";
+}
+
+<h2>Details</h2>
+
+<fieldset>
+    <legend>ProfileModel</legend>
+
+    <div class="display-label">profileid</div>
+    <div class="display-field">@Model.profileId</div>
+
+    <div class="display-label">firstName</div>
+    <div class="display-field">@Model.firstName</div>
+
+    <div class="display-label">lastName</div>
+    <div class="display-field">@Model.lastName</div>
+
+    <div class="display-label">createdOn</div>
+    <div class="display-field">@String.Format("{0:g}", Model.createdOn)</div>
+</fieldset>
+<p>
+    @Html.ActionLink("Edit", "Edit", new { /* id=Model.PrimaryKey */ }) |
+    @Html.ActionLink("Back to List", "Index")
+</p>
+

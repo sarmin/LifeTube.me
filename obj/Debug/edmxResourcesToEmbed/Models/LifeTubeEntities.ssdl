@@ -1,0 +1,113 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Schema Namespace="LifeTubeModel.Store" Alias="Self" Provider="System.Data.SqlClient" ProviderManifestToken="2008" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns="http://schemas.microsoft.com/ado/2009/02/edm/ssdl">
+  <EntityContainer Name="LifeTubeModelStoreContainer">
+    <EntitySet Name="Profile" EntityType="LifeTubeModel.Store.Profile" store:Type="Tables" Schema="LifeTubeAdmin" />
+    <EntitySet Name="UserCircles" EntityType="LifeTubeModel.Store.UserCircles" store:Type="Tables" Schema="LifeTubeAdmin" />
+    <EntitySet Name="Users" EntityType="LifeTubeModel.Store.Users" store:Type="Tables" Schema="LifeTubeAdmin" />
+    <EntitySet Name="Videos" EntityType="LifeTubeModel.Store.Videos" store:Type="Tables" Schema="LifeTubeAdmin" />
+    <AssociationSet Name="FK_Users_Profile" Association="LifeTubeModel.Store.FK_Users_Profile">
+      <End Role="Profile" EntitySet="Profile" />
+      <End Role="Users" EntitySet="Users" />
+    </AssociationSet>
+    <AssociationSet Name="FK_Videos_Users" Association="LifeTubeModel.Store.FK_Videos_Users">
+      <End Role="Users" EntitySet="Users" />
+      <End Role="Videos" EntitySet="Videos" />
+    </AssociationSet>
+  </EntityContainer>
+  <EntityType Name="Profile">
+    <Key>
+      <PropertyRef Name="profileId" />
+    </Key>
+    <Property Name="profileId" Type="int" Nullable="false" StoreGeneratedPattern="Identity" />
+    <Property Name="profileName" Type="varchar" MaxLength="25" />
+    <Property Name="email" Type="varchar" MaxLength="100" />
+    <Property Name="firstName" Type="varchar" MaxLength="25" />
+    <Property Name="lastName" Type="varchar" MaxLength="25" />
+    <Property Name="dateOfBirth" Type="datetime" />
+    <Property Name="streetAddress" Type="varchar" MaxLength="100" />
+    <Property Name="city" Type="varchar" MaxLength="25" />
+    <Property Name="postalCode" Type="varchar" MaxLength="10" />
+    <Property Name="country" Type="varchar" MaxLength="25" />
+    <Property Name="gender" Type="varchar" MaxLength="10" />
+    <Property Name="religion" Type="varchar" MaxLength="15" />
+    <Property Name="homeTown" Type="varchar" MaxLength="25" />
+    <Property Name="studiedAt" Type="varchar" MaxLength="100" />
+    <Property Name="workAt" Type="varchar" MaxLength="100" />
+    <Property Name="createdOn" Type="datetime" />
+    <Property Name="personalContect" Type="varchar" MaxLength="50" />
+    <Property Name="homeContact" Type="varchar" MaxLength="50" />
+    <Property Name="bloodGroup" Type="varchar" MaxLength="10" />
+    <Property Name="birthPlace" Type="varchar" MaxLength="50" />
+    <Property Name="hobby" Type="varchar" MaxLength="50" />
+    <Property Name="lastModifiedOn" Type="datetime" />
+    <Property Name="profilePicture" Type="image" />
+  </EntityType>
+  <EntityType Name="UserCircles">
+    <Key>
+      <PropertyRef Name="userCircleId" />
+    </Key>
+    <Property Name="userCircleId" Type="int" Nullable="false" StoreGeneratedPattern="Identity" />
+    <Property Name="userFrom" Type="int" />
+    <Property Name="userTo" Type="int" />
+    <Property Name="relationship" Type="varchar" MaxLength="50" />
+    <Property Name="createdBy" Type="int" />
+    <Property Name="createdOn" Type="datetime" />
+    <Property Name="lastModifiedBy" Type="int" />
+    <Property Name="lastModifiedDate" Type="datetime" />
+    <Property Name="isAccepted" Type="bit" />
+  </EntityType>
+  <EntityType Name="Users">
+    <Key>
+      <PropertyRef Name="userid" />
+    </Key>
+    <Property Name="userid" Type="int" Nullable="false" StoreGeneratedPattern="Identity" />
+    <Property Name="email" Type="varchar" MaxLength="100" />
+    <Property Name="firstName" Type="varchar" MaxLength="25" />
+    <Property Name="lastName" Type="varchar" MaxLength="25" />
+    <Property Name="profileId" Type="int" />
+    <Property Name="phone" Type="varchar" MaxLength="20" />
+    <Property Name="password" Type="varchar" MaxLength="50" />
+    <Property Name="createdBy" Type="int" />
+    <Property Name="createdDate" Type="datetime" />
+    <Property Name="lastModifiedBy" Type="int" />
+    <Property Name="lastModifiedDate" Type="datetime" />
+    <Property Name="rootUser" Type="bit" />
+    <Property Name="resetPin" Type="varchar" MaxLength="12" />
+  </EntityType>
+  <EntityType Name="Videos">
+    <Key>
+      <PropertyRef Name="videoid" />
+    </Key>
+    <Property Name="videoid" Type="int" Nullable="false" StoreGeneratedPattern="Identity" />
+    <Property Name="videoUrl" Type="varchar(max)" />
+    <Property Name="userid" Type="int" />
+    <Property Name="storedOn" Type="datetime" />
+    <Property Name="videoTitle" Type="varbinary" MaxLength="25" />
+    <Property Name="description" Type="varbinary(max)" />
+    <Property Name="category" Type="varchar" MaxLength="25" />
+  </EntityType>
+  <Association Name="FK_Users_Profile">
+    <End Role="Profile" Type="LifeTubeModel.Store.Profile" Multiplicity="0..1" />
+    <End Role="Users" Type="LifeTubeModel.Store.Users" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Profile">
+        <PropertyRef Name="profileId" />
+      </Principal>
+      <Dependent Role="Users">
+        <PropertyRef Name="profileId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_Videos_Users">
+    <End Role="Users" Type="LifeTubeModel.Store.Users" Multiplicity="0..1" />
+    <End Role="Videos" Type="LifeTubeModel.Store.Videos" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Users">
+        <PropertyRef Name="userid" />
+      </Principal>
+      <Dependent Role="Videos">
+        <PropertyRef Name="userid" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+</Schema>

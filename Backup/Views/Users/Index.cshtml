@@ -1,0 +1,93 @@
+﻿@model IEnumerable<LifeTube.Models.User>
+
+@{
+    ViewBag.Title = "Index";
+}
+
+<h2>Index</h2>
+
+<p>
+    @Html.ActionLink("Create New", "Create")
+</p>
+<table>
+    <tr>
+        <th>
+            email
+        </th>
+        <th>
+            password
+        </th>
+        <th>
+            firstName
+        </th>
+        <th>
+            lastName
+        </th>
+        <th>
+            phone
+        </th>
+        <th>
+            Profile
+        </th>
+        <th>
+            rootUser
+        </th>
+        <th>
+            createdBy
+        </th>
+        <th>
+            createdDate
+        </th>
+        <th>
+            lastModifiedBy
+        </th>
+        <th>
+            lastModifiedDate
+        </th>
+        <th></th>
+    </tr>
+
+@foreach (var item in Model) {
+    <tr>
+        <td>
+            @Html.DisplayFor(modelItem => item.email)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.password)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.firstName)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.lastName)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.phone)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Profile.firstName)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.rootUser)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.createdBy)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.createdDate)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.lastModifiedBy)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.lastModifiedDate)
+        </td>
+        <td>
+            @Html.ActionLink("Edit", "Edit", new { id=item.userid }) |
+            @Html.ActionLink("Details", "Details", new { id=item.userid }) |
+            @Html.ActionLink("Delete", "Delete", new { id=item.userid })
+        </td>
+    </tr>
+}
+
+</table>

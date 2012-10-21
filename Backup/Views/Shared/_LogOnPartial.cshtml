@@ -1,0 +1,68 @@
+﻿@using LifeTube.Models;
+@using Facebook.Web.Mvc;
+
+@if(Request.IsAuthenticated) {
+    <text>Welcome <strong>@ViewBag.Username</strong>!
+    [ @Html.ActionLink("Log Off", "LogOff", "Account") ]</text>
+}
+else {
+   @: [ @Html.ActionLink("Log On", "LogOn", "Account") ]
+}
+
+
+@*@if (Request.IsAuthenticated)
+{
+    <text>Welcome <strong>@User.Identity.Name</strong>!
+    [ @Html.ActionLink("Log Off from Facebook", "Index", "Home") ]</text>
+    <p>Welcome @ViewBag.Name! Your Facebook ID is @ViewBag.Id.</p>
+    
+}
+else
+{
+    
+    <fb:login-button></fb:login-button>*@
+   
+}
+@*<input id="Button1" type="button" value="Logout From Facebook" onclick="FacebookLoginController/ActionResult FacebookLogof()" />
+ *@
+
+@*@Html.ActionLink("Login", "FacebookLogin", "FacebookLogin");*@
+
+@*@if(Request.IsAuthenticated) {
+    <text>Welcome <strong>@User.Identity.Name</strong>!
+    [ @Html.ActionLink("Log Off from Facebook", "LogOff", "Account") ]</text>
+}
+else {
+    <div>
+  
+    <fb:login-button perms="email,user_checkins" onlogin="afterFacebookConnect();" 
+       autologoutlink="false" ></fb:login-button> 
+    </div>
+    <div id="fb-root" style="display:inline; margin-left:20px;"></div>
+    @:[ @Html.ActionLink("Log On", "LogOn", "Account") ]
+}
+<script language="javascript" type="text/javascript">
+    window.fbAsyncInit = function () {
+        FB.init({ appId: ' -- YOUR REAL APPLICATION ID SHOUD BE HERE --', 
+                  status: true, cookie: false, xfbml: true });
+    };
+    function afterFacebookConnect() {
+        FB.getLoginStatus(function (response) {
+            if (response.session) {
+                window.location = "../Account/FacebookLogin?token=" + 
+                       response.session.access_token;
+            } else {
+                // user clicked Cancel
+            }
+        });
+    };
+    $(document).ready(function () {
+        if (document.getElementById('fb-root') != undefined) {
+            var e = document.createElement('script');
+            e.type = 'text/javascript';
+            e.src = document.location.protocol + '//connect.facebook.net/en_US/all.js';
+            e.async = true;
+            document.getElementById('fb-root').appendChild(e);
+        }
+    });
+</script>*@

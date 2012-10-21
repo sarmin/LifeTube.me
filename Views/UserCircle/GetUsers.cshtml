@@ -1,0 +1,25 @@
+﻿@model IEnumerable<dynamic>
+
+<table>
+    <tr>
+        <th></th>
+        <th>
+            You can add to your Circle
+        </th>
+    </tr>
+
+@foreach (var item1 in Model) {
+    <tr>
+        <td>
+            @*@Html.ActionLink("Add To Circle", "AddToCircle", new { id=item.userid }) *@
+            <input type="submit", value="Add", onclick="AddToCircle()"/> 
+           
+        </td>
+        <td>
+            @item1.firstName
+        </td>
+    </tr>
+}
+
+</table>
+
